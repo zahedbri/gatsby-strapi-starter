@@ -9,7 +9,7 @@
     "lib": ["dom", "es2017"],
     "module": "esnext",
     "moduleResolution": "node",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": "public/",

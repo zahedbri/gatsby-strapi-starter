@@ -1,24 +1,18 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import Layout from "../components/layout"
-import Img from "gatsby-image/withIEPolyfill"
+import React from 'react'
+import { Link, graphql } from 'gatsby'
+import Layout from '../layout/DefaultLayout'
+import Img from 'gatsby-image'
 
 // ================================================================================================
 
 const Home = ({ data }) => (
   <Layout>
-    <h1>Welcome</h1>
-
     {data.allStrapiArticle.edges.map(article => (
       <div key={article.node.id}>
         <h2>
           <Link to={`/${article.node.id}`}>{article.node.title}</Link>
         </h2>
-        <Img
-          fixed={article.node.image.childImageSharp.fixed}
-          objectFit="cover"
-          objectPosition="50% 50%"
-        />
+        <Img fixed={article.node.image.childImageSharp.fixed} />
         <p>{`${article.node.content.substr(0, 100)}...`}</p>
       </div>
     ))}
