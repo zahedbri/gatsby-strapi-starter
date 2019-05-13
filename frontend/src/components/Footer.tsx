@@ -1,6 +1,9 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 
+// Atoms:
+import Container from '../atoms/Container'
+
 // Theme:
 import theme from '../theme'
 
@@ -17,7 +20,9 @@ const StyledFooter = styled.footer`
 const Footer = () => (
   <ThemeProvider theme={theme}>
     <StyledFooter>
-      <span style={{ color: '#fff' }}>Footer</span>
+      <Container>
+        <span style={{ color: '#fff' }}>Footer</span>
+      </Container>
     </StyledFooter>
   </ThemeProvider>
 )
