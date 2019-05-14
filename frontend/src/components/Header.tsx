@@ -1,37 +1,34 @@
-import { Link } from 'gatsby'
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 
 // Atoms:
 import Container from '../atoms/Container'
 
+// Components:
+import Nav from '../components/Nav'
+
 // Theme:
 import theme from '../theme'
 
 // ================================================================================================
 
-const StyledHeader = styled.footer`
+const StyledHeader = styled.header`
   width: 100%;
-  background-color: ${props => props.theme.first};
+  height: ${props => `${props.theme.sizes.header}px`};
+
+  display: flex;
+  align-items: center;
+
+  background-color: ${props => props.theme.colors.white};
 `
 
 // ================================================================================================
 
-const Header = ({ siteTitle }) => (
+const Header = () => (
   <ThemeProvider theme={theme}>
     <StyledHeader>
-      <Container>
-        <h1 style={{ margin: 0 }}>
-          <Link
-            to="/"
-            style={{
-              color: `white`,
-              textDecoration: `none`,
-            }}
-          >
-            {siteTitle}
-          </Link>
-        </h1>
+      <Container fluid>
+        <Nav />
       </Container>
     </StyledHeader>
   </ThemeProvider>

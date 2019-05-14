@@ -12,7 +12,7 @@ import theme from '../theme'
 const StyledFooter = styled.footer`
   width: 100%;
   padding: 1rem 0;
-  background-color: ${props => props.theme.first};
+  background-color: ${props => props.theme.colors.first};
 `
 
 // ================================================================================================

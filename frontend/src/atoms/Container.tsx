@@ -10,10 +10,10 @@ export interface ContainerProps {
 
 // ================================================================================================
 
-const StyledContainer = styled.footer<ContainerProps>`
+const StyledContainer = styled.div<ContainerProps>`
   width: 100%;
   max-width: ${props => (props.fluid ? 'none' : '1140px')};
-  padding: 1rem 0;
+  padding: 0 1rem;
   margin: 0 auto;
 `
 

@@ -3,3 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+a {
+  text-decoration: none;
+  text-shadow: none;
+  border: none;
+  box-shadow: none;
+  background-image: none;
+}
