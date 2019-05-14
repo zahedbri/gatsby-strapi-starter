@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { StaticQuery, graphql } from 'gatsby'
 
@@ -13,8 +13,14 @@ import AppContext from '../context/AppContext'
 import 'typeface-anton'
 import 'typeface-montserrat'
 
+// Hooks:
+import useMedia from '../hooks/useMedia'
+
 // Styling (reset):
 import './reset.css'
+
+// Theme:
+import theme from '../theme'
 
 // ================================================================================================
 
@@ -37,6 +43,34 @@ const Layout = ({ children }) => {
   // State
   const [navOpen, setNavOpen] = useState(false)
 
+  // ============================================
+  // Provide responsive tool
+
+  const [screenSizes, setScreenSizes] = useState({
+    xs: true,
+    sm: false,
+    md: false,
+    lg: false,
+    xl: false,
+  })
+
+  const sm = useMedia([`(min-width: ${theme.breakpoints.sm})`], [true], false)
+  const md = useMedia([`(min-width: ${theme.breakpoints.md})`], [true], false)
+  const lg = useMedia([`(min-width: ${theme.breakpoints.lg})`], [true], false)
+  const xl = useMedia([`(min-width: ${theme.breakpoints.xl})`], [true], false)
+
+  useEffect(() => {
+    setScreenSizes({
+      ...screenSizes,
+      sm,
+      md,
+      lg,
+      xl,
+    })
+  }, [])
+
+  // ============================================
+
   return (
     <StaticQuery
       query={graphql`
@@ -49,7 +83,7 @@ const Layout = ({ children }) => {
         }
       `}
       render={data => (
-        <AppContext.Provider value={{ navOpen, setNavOpen }}>
+        <AppContext.Provider value={{ navOpen, screenSizes, setNavOpen }}>
           <App>
             <Header />
             <Content>{children}</Content>

@@ -1,10 +1,13 @@
-import React, { useState, useCallback } from 'react'
+import React, { useContext, useState, useCallback } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { Link } from 'gatsby'
 import { useTransition, animated } from 'react-spring'
 
 // Atoms:
 import Icon from '../atoms/Icon'
+
+// Context:
+import AppContext from '../context/AppContext'
 
 // Theme:
 import theme from '../theme'
@@ -70,24 +73,38 @@ const SlideContent = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
 
+  width: 75%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
 
   z-index: 1;
+
+  @media (min-width: ${theme.breakpoints.lg}) {
+    max-width: 50%;
+  }
 `
 
 const H2 = styled.h2`
+  padding: 8% 4%;
+  margin: 0 0 0.25em;
+
   color: #fff;
   text-shadow: none;
-  margin: 0 0 0.25em;
   text-transform: uppercase;
   font-size: 3rem;
   text-align: center;
+
+  border: 2px solid #fff;
+
+  @media (min-width: ${theme.breakpoints.lg}) {
+    padding: 2% 4%;
+  }
 `
 
 const P = styled.p`
-  font-size: 1.125rem;
+  font-size: 1rem;
   margin: 0;
   font-weight: 400;
   text-align: center;
@@ -95,14 +112,18 @@ const P = styled.p`
 
 // ================================================================================================
 
-const Slide = ({ headline, image, text }: SlideProps) => (
-  <StyledSlide image={image}>
-    <SlideContent>
-      <H2>{headline}</H2>
-      <P>{text}</P>
-    </SlideContent>
-  </StyledSlide>
-)
+const Slide = ({ headline, image, text }: SlideProps) => {
+  const ctx = useContext(AppContext)
+
+  return (
+    <StyledSlide image={image}>
+      <SlideContent>
+        <H2>{headline}</H2>
+        {ctx.screenSizes.md && <P>{text}</P>}
+      </SlideContent>
+    </StyledSlide>
+  )
+}
 
 // ================================================================================================
 
@@ -112,16 +133,16 @@ const Slideshow = () => {
     ({ style }) => (
       <animated.div style={{ ...style }}>
         <Slide
-          headline="Consectetuer elit"
+          headline="Lorem ipsum"
           image="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
-          text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula."
+          text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula et dolore."
         />
       </animated.div>
     ),
     ({ style }) => (
       <animated.div style={{ ...style }}>
         <Slide
-          headline="Lorem Ipsum"
+          headline="Consect etuere"
           image="https://images.unsplash.com/photo-1524749292158-7540c2494485?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
           text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."
         />
@@ -130,7 +151,7 @@ const Slideshow = () => {
     ({ style }) => (
       <animated.div style={{ ...style }}>
         <Slide
-          headline="Dolor sit et"
+          headline="Dolore amet"
           image="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
           text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
         />

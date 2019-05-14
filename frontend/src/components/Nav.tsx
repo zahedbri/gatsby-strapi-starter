@@ -49,11 +49,11 @@ const AnimatedNav = styled(animated.div)`
   width: 100%;
   height: 100vh;
 
-  background-color: ${props => props.theme.colors.second};
-
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background-color: ${props => props.theme.colors.first};
 `
 
 const NavContent = styled.div`

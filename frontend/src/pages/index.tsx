@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
 import styled, { ThemeProvider } from 'styled-components'
 
 // Atoms
 import Container from '../atoms/Container'
 
 // Components
+import Article from '../components/Article'
 import Slideshow from '../components/Slideshow'
 
 // Layout
@@ -39,13 +39,13 @@ const Home = ({ data }) => (
       <Section>
         <Container>
           {data.allStrapiArticle.edges.map(article => (
-            <div key={article.node.id}>
-              <h2>
-                <Link to={`/${article.node.id}`}>{article.node.title}</Link>
-              </h2>
-              <Img fixed={article.node.image.childImageSharp.fixed} />
-              <p>{`${article.node.content.substr(0, 100)}...`}</p>
-            </div>
+            <Article
+              excerpt={`${article.node.content.substr(0, 175)}...`}
+              image={article.node.image}
+              key={article.node.id}
+              link={`/${article.node.id}`}
+              title={article.node.title}
+            />
           ))}
         </Container>
       </Section>
@@ -68,8 +68,8 @@ export const pageQuery = graphql`
           id
           image {
             childImageSharp {
-              fixed(width: 200, height: 125) {
-                ...GatsbyImageSharpFixed
+              fluid(maxWidth: 640) {
+                ...GatsbyImageSharpFluid
               }
             }
           }
