@@ -1,0 +1,36 @@
+{
+  "connection": "default",
+  "collectionName": "slides",
+  "info": {
+    "name": "slide",
+    "description": "Slideshow slide"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "title": {
+      "maxLength": 15,
+      "required": true,
+      "minLength": 5,
+      "type": "string"
+    },
+    "text": {
+      "required": true,
+      "maxLength": 75,
+      "type": "string"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": true
+    },
+    "slideshow": {
+      "model": "slideshow",
+      "via": "slides"
+    }
+  }
+}

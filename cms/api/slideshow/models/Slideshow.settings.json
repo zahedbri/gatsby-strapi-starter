@@ -1,0 +1,29 @@
+{
+  "connection": "default",
+  "collectionName": "slideshows",
+  "info": {
+    "name": "slideshow",
+    "description": "Slider"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "title": {
+      "maxLength": 12,
+      "required": true,
+      "minLength": 5,
+      "type": "string"
+    },
+    "slides": {
+      "collection": "slide",
+      "via": "slideshow"
+    },
+    "page": {
+      "model": "page",
+      "via": "slideshow"
+    }
+  }
+}

@@ -77,5 +77,30 @@ export const pageQuery = graphql`
         }
       }
     }
+
+    allStrapiPage(filter: { id: { eq: "Page_1" } }) {
+      edges {
+        node {
+          title
+          slideshow {
+            id
+          }
+        }
+      }
+    }
+
+    allStrapiSlideshow {
+      edges {
+        node {
+          id
+          slides {
+            id
+            image {
+              absolutePath
+            }
+          }
+        }
+      }
+    }
   }
 `

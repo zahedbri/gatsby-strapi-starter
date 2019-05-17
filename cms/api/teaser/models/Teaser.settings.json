@@ -1,0 +1,32 @@
+{
+  "connection": "default",
+  "collectionName": "teasers",
+  "info": {
+    "name": "teaser",
+    "description": "easer"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "text": {
+      "maxLength": 20,
+      "required": true,
+      "minLength": 10,
+      "type": "string"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": true
+    }
+  }
+}

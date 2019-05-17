@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/teasers",
+      "handler": "Teaser.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/teasers/count",
+      "handler": "Teaser.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/teasers/:id",
+      "handler": "Teaser.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/teasers",
+      "handler": "Teaser.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/teasers/:id",
+      "handler": "Teaser.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/teasers/:id",
+      "handler": "Teaser.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

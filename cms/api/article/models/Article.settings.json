@@ -3,7 +3,7 @@
   "collectionName": "articles",
   "info": {
     "name": "article",
-    "description": "Blogartikel"
+    "description": "Blog article"
   },
   "options": {
     "increments": true,

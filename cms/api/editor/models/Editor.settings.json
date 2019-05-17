@@ -1,0 +1,24 @@
+{
+  "connection": "default",
+  "collectionName": "editors",
+  "info": {
+    "name": "editor",
+    "description": "Text Editor"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "title": {
+      "unique": true,
+      "required": true,
+      "type": "string"
+    },
+    "content": {
+      "required": true,
+      "type": "text"
+    }
+  }
+}
